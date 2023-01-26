@@ -1,19 +1,20 @@
-const courses = require('../data/courses.json')
+const courses = require("../data/courses.json");
 
 module.exports = {
   list: (req, res) => {
-    return res.render("courses/list",{
-      title : "Listado de cursos",
-      courses
+    return res.render("courses/list", {
+      title: "Listado de cursos",
+      courses,
     });
   },
   detail: (req, res) => {
-    const { id } = req.params;
+    const { id, price, description, image, chef } = req.params;
 
-    const course = courses.find(course => course.id === +id)
+    const course = courses.find((course) => course.id === +id);
 
     return res.render("courses/detail", {
-        title : "Detalle del curso",
+      title: "Detalles del curso",
+
       course,
     });
   },
